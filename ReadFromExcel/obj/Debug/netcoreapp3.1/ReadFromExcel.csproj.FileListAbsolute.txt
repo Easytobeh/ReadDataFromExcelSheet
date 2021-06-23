@@ -1,0 +1,17 @@
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.csproj.AssemblyReference.cache
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.AssemblyInfoInputs.cache
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.AssemblyInfo.cs
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.csproj.CoreCompileInputs.cache
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\ReadFromExcel.exe
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\ReadFromExcel.deps.json
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\ReadFromExcel.runtimeconfig.json
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\ReadFromExcel.runtimeconfig.dev.json
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\ReadFromExcel.dll
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\ReadFromExcel.pdb
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.csproj.CopyComplete
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.dll
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.pdb
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\obj\Debug\netcoreapp3.1\ReadFromExcel.genruntimeconfig.cache
+C:\Users\bashir.adeyemi\source\repos\ReadFromExcel\ReadFromExcel\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
