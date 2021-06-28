@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title of the document</title>
+    <style>
+        
+        .center {
+            height: 50%;
+            width: 50%;
+        }
+
+        .table {
+            border:none;
+        }
+        th, td {
+            border: 1px dotted #666;
+        }
+    </style>
+</head>
+<body style="width:100%; font-family: calibri;">
+    <div style='margin-left: 5%; margin-right: 5%;'>
+        <table style="width:100%;">
+            <tr>
+                <td class="table" style="font-size: 20px; letter-spacing:2px">
+                    <h2>SunTrust Bank <br>Nigeria Limited<br></h2> 1 Oladele Olashore street,<br>Off Sanusi Fafunwa,&nbsp;<br>Victoria Island.<br>Phone:<br>Email:
+                </td>
+                <th class="table"><img src="https://ubanking.suntrustng.com/utility/images/SunTrustlogo.png" alt="image" style='height: 100px; width: 100px; letter-spacing: 2px;'> <br><h1>PAYSLIP</h1></th>
+            </tr>
+
+        </table>
+        <br />
+        <div>
+            <table class="tables" style="width:100%;font-size: 18px">
+                <tr style="background-color:black;color:white;">
+                    <th class="tables">EMPLOYEE INFORMATION</th>
+                    <th>PAY TYPE</th>
+                    <th>PAY MONTH</th>
+                </tr>
+                <tr>
+                    <td class="table"><strong>Name:</strong>  {StaffName}</td>
+                    <td >Monthly</td>
+                    <td >{Month}</td>
+                </tr>
+                <tr>
+                    <td class="table"><strong>Staff ID:</strong>  {StaffId}</td>
+                    <td style="background-color:black;color:white;">YEAR</td>
+                    <td style="background-color:black;color:white;">DAYS WORKED</td>
+                    
+                </tr>
+                <tr>
+                    <td class="table"><strong>Designation:</strong>  {StaffId}</td>
+                    <td>{Year}</td>
+                    <td>{Days_Worked}</td>
+                </tr>
+                <tr>
+                    <td class="table" rowpan="2"><strong>Grade:</strong>  {Grade}</td>
+
+                </tr>
+            </table>
+            <br />
+            <table style="width:100%;font-size: 18px">
+                <tr style="background-color:black;color:white;">
+                    <th>Month</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>Basic Salary</td>
+                    <td>{Basic_Salary}</td>
+                </tr>
+                <tr>
+                    <td>Housing Allowance</td>
+                    <td>{Housing_Allowance}</td>
+                </tr>
+                <tr>
+                    <td>Transport Allowance</td>
+                    <td>{Transport_Allowance}</td>
+                </tr>
+                <tr>
+                    <td>Utility</td>
+                    <td>{Utility}</td>
+                </tr>
+                <tr>
+                    <td>Entertainment Allowance</td>
+                    <td>{Entertainment_Allowance}</td>
+                </tr>
+                <tr>
+                    <td>Lunch</td>
+                    <td>{Lunch}</td>
+                </tr>
+                <tr>
+                    <td>Education</td>
+                    <td>{Education}</td>
+                </tr>
+                <tr>
+                    <td>Dressing Allowance</td>
+                    <td>{Dressing_Allowance</td>
+                </tr>
+                <tr>
+                    <td>Leave Allowance</td>
+                    <td>{Leave_Allowance}</td>
+                </tr>
+                <tr>
+                    <td>Car Monetization</td>
+                    <td>{Car_Monetization}</td>
+                </tr>
+                <tr>
+                    <td style="background-color:  rgb(228, 225, 225);">Gross Pay</td>
+                    <td style="background-color: rgb(228, 225, 225);">{Earnings}</td>
+                </tr>
+
+
+            </table>
+            <br/>
+            <table style="width:100%;font-size: 18px">
+                <tr style="background-color:black;color:white;">
+                    <th>DEDUCTIONS</th>
+                    <th>AMOUNT</th>
+                </tr>
+                <tr>
+                    <td>PAYE Tax</td>
+                    <td>{PAYE_Tax}</td>
+                </tr>
+                <tr>
+                    <td>Pension</td>
+                    <td>{Pension}</td>
+                </tr>
+                <tr>
+                    <td>Leave Allowance</td>
+                    <td>{Leave_Allowance}</td>
+                </tr>
+                <tr>
+                    <td>NHF</td>
+                    <td>{NHF}</td>
+                </tr>
+                <tr>
+                    <td>Voluntary Contribution Pension</td>
+                    <td>{Voluntary_Contribution_Pension}</td>
+                </tr>
+                <tr>
+                    <td style="background-color:  rgb(228, 225, 225);"><strong>TOTAL DEDUCTIONS</strong></td>
+                    <td style="background-color:  rgb(228, 225, 225);"><strong>{TotalDeductions}</strong></td>
+                </tr>
+                <tr>
+                    <td style=" height: 22px; border-style: none;"></td>
+                    <td style=" height: 22px; border-style: none;"></td>
+                </tr>
+                <tr>
+                    <td style="background-color:  rgb(228, 225, 225); border-style: solid;"><strong>MONTHLY PAY</strong></td>
+                    <td style="background-color:  rgb(228, 225, 225); border-style: solid;"><strong>{NetMonthlyPay}</strong></td>
+                </tr>
+                 </table>            
+        </div>
+    </div>
+</body>
+</html>
