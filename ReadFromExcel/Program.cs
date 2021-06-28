@@ -8,6 +8,7 @@ using System.Data;
 using Newtonsoft.Json;
 using DocumentFormat.OpenXml;
 using System.Reflection;
+using System.IO;
 
 namespace ReadFromExcel
 {
@@ -24,7 +25,9 @@ namespace ReadFromExcel
             public string Staff_Role { get; set; }
             public string Staff_Grade { get; set; }
             public string Hire_Date { get; set; }
+            public string Nuban { get; set; }
             public string Days_Worked { get; set; }
+            public string Annual_Gross_Income { get; set; }
             public string Monthly_Gross_Income { get; set; }
             public string Basic_Salary { get; set; }
             public string Housing { get; set; }
@@ -39,11 +42,17 @@ namespace ReadFromExcel
             public string NHF { get; set; }
             public string Monthly_Total_Deductions { get; set; }
             public string Vol_Cont_Pension { get; set; }
+            public string Monthly_Pension { get; set; }
+            public string PAYE { get; set; }
             public string Monthly_Net_Sal { get; set; }
             public string Upload_Date { get; set; }
             public string Month { get; set; }
             public string Year { get; set; }
             public string Email { get; set; }
+            public string Total_Deduction { get; internal set; }
+            public string Leave_Allowance_Per_Month { get; internal set; }
+            public string Gross_Total { get; internal set; }
+            public string Total_Per_Month { get; internal set; }
         }
         public class PayslipStatus
         {
@@ -71,8 +80,8 @@ namespace ReadFromExcel
         {
             try
             {
-                string strDoc = @"C:\Users\bashir.adeyemi\source\repos\ExcelToDb\ExcelToDb\Files\Payslip_Test_Table.xlsx";
-
+                string strDoc = @"C:\Users\bashir.adeyemi\source\repos\ReadDataFromExcelSheet_ConsoleApp\ReadFromExcel\Payslip_Test_Table.xlsx";
+                
                 //Lets open the existing excel file and read through its content . Open the excel using openxml sdk
                 using (SpreadsheetDocument doc = SpreadsheetDocument.Open(strDoc, false))
                 {
@@ -85,6 +94,10 @@ namespace ReadFromExcel
                     List<DbTable.PaymentAdvice> Datalists = new List<DbTable.PaymentAdvice>();
                     var Staff = new DbTable.PaymentAdvice();
                     var Payslip = new DbTable.PayslipStatus();
+
+                    //Output pdf file converted
+          
+                    //Create path
 
 
                     //using for each loop to get the sheet from the sheetcollection  
@@ -153,67 +166,86 @@ namespace ReadFromExcel
                                                 Staff.Hire_Date = excelResult;
                                                 break;
                                             case 6:
-                                                Staff.Days_Worked = excelResult;
+                                                Staff.Nuban = excelResult;
                                                 break;
                                             case 7:
-                                                Staff.Monthly_Gross_Income = excelResult;
+                                                Staff.Days_Worked = excelResult;
                                                 break;
                                             case 8:
-                                                Staff.Basic_Salary = excelResult;
+                                                Staff.Annual_Gross_Income = excelResult;
                                                 break;
                                             case 9:
-                                                Staff.Housing = excelResult;
+                                                Staff.Monthly_Gross_Income = excelResult;
                                                 break;
                                             case 10:
-                                                Staff.Transport = excelResult;
+                                                Staff.Basic_Salary = excelResult;
                                                 break;
                                             case 11:
-                                                Staff.Lunch = excelResult;
+                                                Staff.Housing = excelResult;
                                                 break;
                                             case 12:
-                                                Staff.Utility = excelResult;
+                                                Staff.Transport = excelResult;
                                                 break;
                                             case 13:
-                                                Staff.Entertainment = excelResult;
+                                                Staff.Lunch = excelResult;
                                                 break;
                                             case 14:
-                                                Staff.Education = excelResult;
+                                                Staff.Utility = excelResult;
                                                 break;
                                             case 15:
-                                                Staff.Dressing = excelResult;
+                                                Staff.Entertainment = excelResult;
                                                 break;
                                             case 16:
-                                                Staff.Leave_Allowance = excelResult;
+                                                Staff.Education = excelResult;
                                                 break;
                                             case 17:
-                                                Staff.Car_Monetization = excelResult;
+                                                Staff.Dressing = excelResult;
                                                 break;
                                             case 18:
-                                                Staff.NHF = excelResult;
+                                                Staff.Leave_Allowance = excelResult;
                                                 break;
                                             case 19:
-                                                Staff.Monthly_Total_Deductions = excelResult;
+                                                Staff.Car_Monetization = excelResult;
                                                 break;
                                             case 20:
-                                                Staff.Vol_Cont_Pension = excelResult;
+                                                Staff.Total_Per_Month = excelResult;
                                                 break;
                                             case 21:
-                                                Staff.Monthly_Net_Sal = excelResult;
+                                                Staff.Gross_Total = excelResult;
                                                 break;
                                             case 22:
-                                                Staff.Upload_Date = excelResult;
+                                                Staff.PAYE = excelResult;
                                                 break;
                                             case 23:
-                                                Staff.Month = excelResult;
+                                                Staff.Monthly_Pension = excelResult;
                                                 break;
                                             case 24:
-                                                Staff.Year = excelResult;
+                                                Staff.Leave_Allowance_Per_Month = excelResult;
                                                 break;
                                             case 25:
+                                                Staff.NHF = excelResult;
+                                                break;
+                                            case 26:
+                                                Staff.Vol_Cont_Pension = excelResult;
+                                                break;
+                                            case 27:
+                                                Staff.Total_Deduction = excelResult;
+                                                break;
+                                            case 28:
+                                                Staff.Monthly_Net_Sal = excelResult;
+                                                break;
+                                            case 29:
+                                                Staff.Month = excelResult;
+                                                break;
+                                            case 30:
+                                                Staff.Year = excelResult;
+                                                break;
+                                            case 31:
                                                 {
                                                     Staff.Email = excelResult;
                                                     //Display result at the end of each row
-                                                    DisplayPayslipDetails(Staff);
+                                                   // DisplayPayslipDetails(Staff);
+                                                    EditHtmlFile(Staff);
                                                     break;
                                                 }
                                                
@@ -276,81 +308,11 @@ namespace ReadFromExcel
                 Console.WriteLine("Error:" + ex.Message + "," + ex.StackTrace);
             }
         }
-        static void ReadExcelFile()
+       
+        static string CreateFileName(string staffName)
         {
-            try
-            {
-                string strDoc = @"C:\Users\bashir.adeyemi\source\repos\ExcelToDb\ExcelToDb\Files\test_table.xlsx";
-
-                //Lets open the existing excel file and read through its content . Open the excel using openxml sdk
-                using (SpreadsheetDocument doc = SpreadsheetDocument.Open(strDoc, false))
-                {
-                    //create the object for workbook part  
-                    WorkbookPart workbookPart = doc.WorkbookPart;
-                    Sheets thesheetcollection = workbookPart.Workbook.GetFirstChild<Sheets>();
-                    StringBuilder excelResult = new StringBuilder();
-
-                    //using for each loop to get the sheet from the sheetcollection  
-                    foreach (Sheet thesheet in thesheetcollection)
-                    {
-                        excelResult.AppendLine("Excel Sheet Name : " + thesheet.Name);
-                        excelResult.AppendLine("----------------------------------------------- ");
-                        //statement to get the worksheet object by using the sheet id  
-                        Worksheet theWorksheet = ((WorksheetPart)workbookPart.GetPartById(thesheet.Id)).Worksheet;
-
-                        SheetData thesheetdata = (SheetData)theWorksheet.GetFirstChild<SheetData>();
-                        try
-                        {
-                            foreach (Row thecurrentrow in thesheetdata)
-                            {
-                                foreach (Cell thecurrentcell in thecurrentrow)
-                                {
-                                    //statement to take the integer value  
-                                    string currentcellvalue = string.Empty;
-                                    int id;
-                                    Int32.TryParse(thecurrentcell.InnerText, out id);
-
-
-                                    SharedStringItem item = workbookPart.SharedStringTablePart.SharedStringTable.Elements<SharedStringItem>().ElementAt(id);
-                                    if (item.Text != null)
-                                    {
-                                        //code to take the string value  
-                                        excelResult.Append(item.Text.Text + " ");
-                                    }
-                                    else if (item.InnerText != null)
-                                    {
-                                        currentcellvalue = item.InnerText;
-                                    }
-                                    else if (item.InnerXml != null)
-                                    {
-                                        currentcellvalue = item.InnerXml;
-                                    }
-
-
-
-
-                                    excelResult.AppendLine();
-                                }
-
-                                excelResult.Append("");
-                                Console.WriteLine(excelResult.ToString());
-                                Console.ReadLine();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine(ex.Message + "Stacktrace:" + ex.StackTrace); ;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error:" + ex.Message + "," + ex.StackTrace);
-            }
+            return $"{staffName}_{DateTime.Now}";
         }
-
         static public void DisplayPayslipStatus(DbTable.PayslipStatus payslip)
         {
             PropertyInfo[] properties = typeof(DbTable.PayslipStatus).GetProperties();
@@ -370,86 +332,6 @@ namespace ReadFromExcel
             }
             Console.WriteLine("-------------------------");
            
-        }
-        static void ReadExcelFilerealest()
-        {
-            try
-            {
-                string strDoc = @"C:\Users\bashir.adeyemi\source\repos\ExcelToDb\ExcelToDb\Files\test_table.xlsx";
-
-                //Lets open the existing excel file and read through its content . Open the excel using openxml sdk
-                using (SpreadsheetDocument doc = SpreadsheetDocument.Open(strDoc, false))
-                {
-                    //create the object for workbook part  
-                    WorkbookPart workbookPart = doc.WorkbookPart;
-                    Sheets thesheetcollection = workbookPart.Workbook.GetFirstChild<Sheets>();
-                    StringBuilder excelResult = new StringBuilder();
-
-                    //using for each loop to get the sheet from the sheetcollection  
-                    foreach (Sheet thesheet in thesheetcollection)
-                    {
-                        excelResult.AppendLine("Excel Sheet Name : " + thesheet.Name);
-                        excelResult.AppendLine("----------------------------------------------- ");
-                        //statement to get the worksheet object by using the sheet id  
-                        Worksheet theWorksheet = ((WorksheetPart)workbookPart.GetPartById(thesheet.Id)).Worksheet;
-
-                        SheetData thesheetdata = (SheetData)theWorksheet.GetFirstChild<SheetData>();
-                        try
-                        {
-                            foreach (Row thecurrentrow in thesheetdata)
-                            {
-                                foreach (Cell thecurrentcell in thecurrentrow)
-                                {
-                                    //statement to take the integer value  
-                                    string currentcellvalue = string.Empty;
-                                    if (thecurrentcell.DataType != null)
-                                    {
-                                        if (thecurrentcell.DataType == CellValues.SharedString)
-                                        {
-                                            int id;
-                                            if (Int32.TryParse(thecurrentcell.InnerText, out id))
-                                            {
-                                                SharedStringItem item = workbookPart.SharedStringTablePart.SharedStringTable.Elements<SharedStringItem>().ElementAt(id);
-                                                if (item.Text != null)
-                                                {
-                                                    //code to take the string value  
-                                                    excelResult.Append(item.Text.Text + " ");
-                                                }
-                                                else if (item.InnerText != null)
-                                                {
-                                                    currentcellvalue = item.InnerText;
-                                                }
-                                                else if (item.InnerXml != null)
-                                                {
-                                                    currentcellvalue = item.InnerXml;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        excelResult.Append(Convert.ToString(thecurrentcell.InnerText) + " ");
-                                    }
-                                }
-                                excelResult.AppendLine();
-                            }
-
-                            excelResult.Append("");
-                            Console.WriteLine(excelResult.ToString());
-                            Console.ReadLine();
-                        }
-                        catch (Exception ex)
-                        {
-
-                            Console.WriteLine(ex.Message + "Stacktrace:" + ex.StackTrace); ;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error:" + ex.Message + "," + ex.StackTrace);
-            }
         }
 
         static void WriteExcelFile()
@@ -512,8 +394,59 @@ namespace ReadFromExcel
                 workbookPart.Workbook.Save();
             }
         }
+       static void EditHtmlFile(DbTable.PaymentAdvice uploadedPayslip)
+        {
+            string fileName = "";
+            string PDFPath = "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadDataFromExcelSheet_ConsoleApp\\Output";
+            string htmlTemplate = "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadDataFromExcelSheet_ConsoleApp\\PDFTemplate.html";
+
+            try
+            {
+                string html = File.ReadAllText(htmlTemplate)
+                    .Replace("{Staff_Name}", uploadedPayslip.Staff_Name)
+                    .Replace("{Staff_ID}", uploadedPayslip.Staff_Id)
+                    .Replace("{Staff_Grade}", uploadedPayslip.Staff_Grade)
+                    .Replace("{Staff_Role}", uploadedPayslip.Staff_Role)
+                    .Replace("{Month}", uploadedPayslip.Month)
+                .Replace("{Days_Worked}", uploadedPayslip.Days_Worked)
+                .Replace("{Basic_Salary}", uploadedPayslip.Basic_Salary)
+                .Replace("{Housing_Allowance}", uploadedPayslip.Housing)
+                .Replace("{Transport_Allowance}", uploadedPayslip.Transport)
+                .Replace("{Utility}", uploadedPayslip.Utility)
+                .Replace("{Entertainment_Allowance}", uploadedPayslip.Entertainment)
+                .Replace("{Lunch}", uploadedPayslip.Lunch)
+                .Replace("{Education}", uploadedPayslip.Education)
+                .Replace("{Dressing_Allowance}", uploadedPayslip.Dressing)
+                .Replace("{Leave_Allowance}", uploadedPayslip.Leave_Allowance)
+                .Replace("{Car_Monetization}", uploadedPayslip.Car_Monetization)
+                .Replace("{Earnings}", uploadedPayslip.Monthly_Gross_Income)
+                .Replace("{PAYE_Tax}", uploadedPayslip.PAYE)
+                .Replace("{Pension}", uploadedPayslip.Monthly_Pension)
+                .Replace("{Leave_Allowance_PM}", uploadedPayslip.Leave_Allowance_Per_Month)
+                .Replace("{NHF}", uploadedPayslip.NHF)
+                .Replace("{Voluntary_Contribution}", uploadedPayslip.Vol_Cont_Pension)
+                .Replace("{Total_Deductions}", uploadedPayslip.Total_Deduction)
+                .Replace("{Net_Monthly_Pay}", uploadedPayslip.Monthly_Net_Sal);
+
+
+                //call method that generate unique name for each file
+                fileName = uploadedPayslip.Staff_Name + ".html";//CreateFileName(uploadedPayslip.Name);
+
+                //save HtmFile for each staff
+               File.WriteAllText(PDFPath + "\\" + fileName, html);
+
+            }
+            catch (Exception e)
+            {
+                var ex = e;
+            }
+          //  return PDFPath + "\\" + fileName;
+
+        }
+
     }
 
+   
     internal class UserDetails
     {
         public UserDetails()

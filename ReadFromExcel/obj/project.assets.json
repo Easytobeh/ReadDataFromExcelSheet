@@ -4890,11 +4890,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadFromExcel\\ReadFromExcel\\ReadFromExcel.csproj",
+      "projectUniqueName": "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadDataFromExcelSheet_ConsoleApp\\ReadFromExcel\\ReadFromExcel.csproj",
       "projectName": "ReadFromExcel",
-      "projectPath": "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadFromExcel\\ReadFromExcel\\ReadFromExcel.csproj",
+      "projectPath": "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadDataFromExcelSheet_ConsoleApp\\ReadFromExcel\\ReadFromExcel.csproj",
       "packagesPath": "C:\\Users\\bashir.adeyemi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadFromExcel\\ReadFromExcel\\obj\\",
+      "outputPath": "C:\\Users\\bashir.adeyemi\\source\\repos\\ReadDataFromExcelSheet_ConsoleApp\\ReadFromExcel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
